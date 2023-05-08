@@ -50,6 +50,7 @@ public class Rate {
     @Override
     public int hashCode() {
         try {
+            System.out.println("!!!!!!!!!!!!!!!!+++");
             MessageDigest md = MessageDigest.getInstance("MD5");
             md.update(String.valueOf(id).getBytes());
             String hash = new String(md.digest(), "US-ASCII");
@@ -60,7 +61,7 @@ public class Rate {
             String hashAscii = listAscii.stream()
                     .map( e -> String.valueOf(Math.abs(e)))
                     .collect(Collectors.joining(""));
-            return Integer.parseInt(hashAscii.substring(0,10));
+            return Integer.parseInt(hashAscii.substring(0,6));
         } catch (NoSuchAlgorithmException | UnsupportedEncodingException e) {
             throw new RuntimeException(e);
         }

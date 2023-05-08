@@ -43,30 +43,30 @@ public class Rate extends Object {
             String hashAscii = listAscii.stream()
                     .map( e -> String.valueOf(Math.abs(e)))
                     .collect(Collectors.joining(""));
-            return Integer.parseInt(hashAscii.substring(0,10));
+            return Integer.parseInt(hashAscii.substring(0,6));
         } catch (NoSuchAlgorithmException | UnsupportedEncodingException e) {
             throw new RuntimeException(e);
         }
     }
 
 
-//    @Override
-//    public boolean equals(Object o) {
-//        if (o instanceof rate.Rate) {
-//            rate.Rate comparation = (rate.Rate) o;
-//            if (comparation.getId() == null || this.id == null)
-//                return false;
-//            return comparation.getId() == this.id;
-//        }
-//        return super.equals(o);
-//    }
-
-
     @Override
     public boolean equals(Object o) {
-        if (this.hashCode() == o.hashCode()){
-            return true;
+        if (o instanceof rate.Rate) {
+            rate.Rate comparation = (rate.Rate) o;
+            if (comparation.getId() == null || this.id == null)
+                return false;
+            return comparation.getId() == this.id;
         }
-        return false;
+        return super.equals(o);
     }
+
+
+//    @Override
+//    public boolean equals(Object o) {
+//        if (this.hashCode() == o.hashCode()){
+//            return true;
+//        }
+//        return false;
+//    }
 }
